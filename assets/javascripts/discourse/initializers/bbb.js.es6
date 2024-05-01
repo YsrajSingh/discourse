@@ -87,7 +87,10 @@ export default {
         !siteSettings.bbb_staff_only ||
         (siteSettings.bbb_staff_only && currentUser && currentUser.staff)
       ) {
-        api.modifyClass("controller:composer", {
+        api.addComposerToolbarPopupMenuOption({
+          id: "insert-bbb",
+          icon: "video",
+          label: "bbb.composer_title",
           actions: {
             insertBBBModal() {
               showModal("insert-bbb").setProperties({
@@ -95,14 +98,6 @@ export default {
               });
             },
           },
-        });
-        api.addToolbarPopupMenuOptionsCallback((controller) => {
-          return {
-            id: "insert-bbb",
-            icon: "video",
-            action: "insertBBBModal",
-            label: "bbb.composer_title",
-          };
         });
       }
     });
