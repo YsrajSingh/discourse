@@ -71,7 +71,6 @@ function attachBBB($elem, helper) {
   }
 }
 
-console.log("showModal", showModal())
 console.log("showModal('insert-bbb')", showModal('insert-bbb'))
 export default {
   name: "insert-bbb",
