@@ -92,16 +92,15 @@ export default {
           icon: "video",
           label: "bbb.composer_title",
           actions: {
-            insertBBBModal() {
-              showModal("insert-bbb").setProperties({
-                toolbarEvent: this.get("toolbarEvent"),
-              });
-            },
+              showModal: function() {
+                  showModal("insert-bbb").setProperties({
+                      toolbarEvent: this.get("toolbarEvent"),
+                  });
+              },
           },
           action: (toolbarEvent) => {
-            console.log("action",toolbarEvent)
             showModal("insert-bbb").setProperties({
-              toolbarEvent,
+              toolbarEvent: this.get("toolbarEvent"),
             });
           },
         });
