@@ -87,14 +87,22 @@ export default {
         !siteSettings.bbb_staff_only ||
         (siteSettings.bbb_staff_only && currentUser && currentUser.staff)
       ) {
-        api.addComposerToolbarPopupMenuOption({
-          icon: "video",
-          label: "bbb.composer_title",
-          action: (toolbarEvent) => {
-            showModal("insert-bbb").setProperties({
-              toolbarEvent,
-            });
+        api.modifyClass("controller:composer", {
+          actions: {
+            insertBBBModal() {
+              showModal("insert-bbb").setProperties({
+                toolbarEvent: this.get("toolbarEvent"),
+              });
+            },
           },
+        });
+        api.addToolbarPopupMenuOptionsCallback((controller) => {
+          return {
+            id: "insert-bbb",
+            icon: "video",
+            action: "insertBBBModal",
+            label: "bbb.composer_title",
+          };
         });
       }
     });
