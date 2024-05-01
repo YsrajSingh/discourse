@@ -93,12 +93,14 @@ export default {
           label: "bbb.composer_title",
           actions: {
               showModal: function() {
+                console.log("above")
                   showModal("insert-bbb").setProperties({
                       toolbarEvent: this.get("toolbarEvent"),
                   });
               },
           },
           action: (toolbarEvent) => {
+            console.log("down")
             showModal("insert-bbb").setProperties({
               toolbarEvent: this.get("toolbarEvent"),
             });
