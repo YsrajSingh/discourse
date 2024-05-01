@@ -71,6 +71,9 @@ function attachBBB($elem, helper) {
   }
 }
 
+console.log("showModal", showModal)
+console.log("showModal('insert-bbb')", showModal('insert-bbb'))
+console.log("showModal('insert-bbb').setProperties()", showModal('insert-bbb').setProperties())
 export default {
   name: "insert-bbb",
 
@@ -93,7 +96,6 @@ export default {
           label: "bbb.composer_title",
           actions: {
             insertBBBModal() {
-              console.log("actions",toolbarEvent)
               showModal("insert-bbb").setProperties({
                 toolbarEvent: this.get("toolbarEvent"),
               });
