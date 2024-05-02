@@ -88,7 +88,7 @@ export default {
         (siteSettings.bbb_staff_only && currentUser && currentUser.staff)
       ) {
         api.addComposerToolbarPopupMenuOption({
-          icon: settings.button_icon,
+          icon: siteSettings.button_icon,
           label: themePrefix("composer_title"),
           action: (toolbarEvent) => {
             modal.show("insert-bbb", {
