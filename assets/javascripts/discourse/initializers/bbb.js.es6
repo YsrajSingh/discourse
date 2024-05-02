@@ -78,6 +78,7 @@ export default {
     withPluginApi("1.15.0", (api) => {
       const currentUser = api.getCurrentUser();
       const siteSettings = api.container.lookup("site-settings:main");
+      const modal = api.container.lookup("service:modal");
 
       api.decorateCooked(attachBBB, {
         id: "discourse-bbb",
