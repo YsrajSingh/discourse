@@ -82,31 +82,35 @@ export default {
       api.decorateCooked(attachBBB, {
         id: "discourse-bbb",
       });
-
+      // Ensure the current user has access to the feature
       if (
         !siteSettings.bbb_staff_only ||
         (siteSettings.bbb_staff_only && currentUser && currentUser.staff)
       ) {
         api.addComposerToolbarPopupMenuOption({
-          id: "insert-bbb",
-          icon: "video",
-          label: "bbb.composer_title",
-          actions: {
-              showModal: function() {
-                console.log("above")
-                  showModal("insert-bbb").setProperties({
-                      toolbarEvent: this.get("toolbarEvent"),
-                  });
-              },
+          icon: settings.button_icon,
+          label: themePrefix("composer_title"),
+          action: (toolbarEvent) => {
+            modal.show("insert-bbb", {
+              model: { insertMeeting: toolbarEvent.addText },
+            });
           },
-          // action: (toolbarEvent) => {
-          //   console.log("down")
-          //   showModal("insert-bbb").setProperties({
-          //     toolbarEvent: toolbarEvent,
-          //   });
-          // },
         });
       }
+      //  else {
+      //   api.onToolbarCreate((toolbar) => {
+      //     toolbar.addButton({
+      //       title: themePrefix("composer_title"),
+      //       id: "insert-bbb",
+      //       group: "insertions",
+      //       icon: settings.button_icon,
+      //       perform: (toolbarEvent) =>
+      //         modal.show("insert-bbb", {
+      //           model: { insertMeeting: toolbarEvent.addText },
+      //         }),
+      //     });
+      //   });
+      // }
     });
   },
 };
