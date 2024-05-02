@@ -89,7 +89,7 @@ export default {
       ) {
         api.addComposerToolbarPopupMenuOption({
           icon: siteSettings.button_icon,
-          label: themePrefix("composer_title"),
+          label: "bbb.composer_title",
           action: (toolbarEvent) => {
             modal.show("insert-bbb", {
               model: { insertMeeting: toolbarEvent.addText },
